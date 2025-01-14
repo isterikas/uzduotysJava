@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public abstract class Product implements Taxation {
     private String name;
     private double netPrice;
@@ -14,7 +16,7 @@ public abstract class Product implements Taxation {
     public abstract double getFinalPrice();
 
     public String printFinalPrice() {
-        return "Final price in Euros: " + getFinalPrice() + ", final price in Swiss Francs: " + getFinalPrice() * 0.94;
+        return "Final price in Euros: " + new DecimalFormat("##.##").format(getFinalPrice()) + ", final price in Swiss Francs: " + new DecimalFormat("##.##").format(getFinalPrice()* 0.94);
     }
 }
 
