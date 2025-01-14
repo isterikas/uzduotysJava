@@ -18,6 +18,10 @@ public abstract class Product implements Taxation {
     public String printFinalPrice() {
         return "Final price in Euros: " + new DecimalFormat("##.##").format(getFinalPrice()) + ", final price in Swiss Francs: " + new DecimalFormat("##.##").format(getFinalPrice()* 0.94);
     }
+
+    public String toString(){
+        return name;
+    }
 }
 
 
