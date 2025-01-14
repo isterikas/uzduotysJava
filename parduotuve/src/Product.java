@@ -1,4 +1,17 @@
-package PACKAGE_NAME;
+public abstract class Product implements Taxation {
+    private String name;
+    private double netPrice;
 
-public class Product {
+    public Product(String name, double price) {
+        this.name = name;
+        netPrice = price;
+    }
+
+    public double getNetPrice() {
+        return netPrice;
+    }
+
+    public abstract double getFinalPrice();
 }
+
+
