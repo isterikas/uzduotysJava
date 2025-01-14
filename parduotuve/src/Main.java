@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Product result = null;
+        Product result;
         while (true) {
             System.out.println("Please provide information on the type of product:");
             System.out.println("Press R for regular product, D for drug, W for wine, A for any other alcoholic beverage");
@@ -25,7 +25,6 @@ public class Main {
                     break;
                 } else {
                     System.out.println("Alcohol percentage:");
-
                     double percentage = Double.parseDouble(scanner.nextLine());
                     System.out.println("Volume (in liters):");
                     double volume = Double.parseDouble(scanner.nextLine());
@@ -41,6 +40,5 @@ public class Main {
                 }
             }
         }
-
     }
 }
