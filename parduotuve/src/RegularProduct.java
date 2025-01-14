@@ -10,4 +10,6 @@ public class RegularProduct extends Product {
     public double getFinalPrice() {
         return super.getNetPrice() + super.getNetPrice() * pvm;
     }
+
 }
+

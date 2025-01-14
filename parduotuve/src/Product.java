@@ -12,6 +12,10 @@ public abstract class Product implements Taxation {
     }
 
     public abstract double getFinalPrice();
+
+    public String printFinalPrice() {
+        return "Final price in Euros: " + getFinalPrice() + ", final price in Swiss Francs: " + getFinalPrice() * 0.94;
+    }
 }
 
 
