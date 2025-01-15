@@ -8,6 +8,7 @@ public class Transaction {
     String description;
 
     public Transaction(char type, double amount, double balance, String description){
+        this.amount = amount;
         date = new Date();
         this.type = type;
         this.balance = balance;
@@ -16,12 +17,10 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return "Transaction{" +
-                "date=" + date +
+        return '\n'+ "date=" + date +
                 ", type=" + type +
                 ", amount=" + amount +
                 ", balance=" + balance +
-                ", description='" + description + '\'' +
-                '}';
+                ", description='" + description + '\'';
     }
 }

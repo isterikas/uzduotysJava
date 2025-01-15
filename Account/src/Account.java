@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Account {
+public abstract class Account {
     private int id;
     private double balance;
     private static double annualInterestRate = 0.0;
@@ -57,20 +57,18 @@ public class Account {
         return getMonthlyInterestRate() * balance;
     }
 
-    public void withdraw(double amount) {
-        if (amount <= balance) {
-            balance -= amount;
-            transactions.add(new Transaction('W', amount, balance, "withdrawal"));
-        }
+    public void withdraw(double amount, String description) {
+        balance -= amount;
+        Transaction transaction = new Transaction('W', amount, balance, description);
+        transactions.add(transaction);
     }
 
-    public void withdraw(double amount, String description) {
-        if (amount <= balance) {
-            balance -= amount;
-            transactions.add(new Transaction('W', amount, balance, description));
-           ;
-        }
+    public void withdraw(double amount) {
+        balance -= amount;
+        Transaction transaction = new Transaction('W', amount, balance, "withdrawal");
+        transactions.add(transaction);
     }
+
 
     public String getDateCreated() {
         return String.valueOf(dateCreated);
@@ -92,13 +90,17 @@ public class Account {
         }
     }
 
-    public String getStatement(){
-        return transactions.toString();
+    public String getStatement() {
+        return "account holder: " + name + '\n' + "annual interest rate: " + annualInterestRate * 100 + "%" + '\n' + "current balance: " + balance + '\n' + "transaction history: " + transactions.toString();
+    }
+
+    public void addTransaction(Transaction transaction) {
+        transactions.add(transaction);
     }
 
 
     @Override
     public String toString() {
-        return TYPE + " of " + name + " id: " + id + " balance " + balance + " created on: " + String.valueOf(dateCreated);
+        return " of " + name + " id: " + id + " balance " + balance + " created on: " + String.valueOf(dateCreated);
     }
 }

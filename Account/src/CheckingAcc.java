@@ -20,6 +20,13 @@ public class CheckingAcc extends Account {
     }
 
     @Override
+    public void withdraw(double amount, String description) {
+        if (Math.abs(super.getBalance() - amount) <= overdraftLimit && amount > 0) {
+            super.withdraw(amount, description);
+        }
+    }
+
+    @Override
     public String toString() {
         return TYPE + super.toString();
     }
