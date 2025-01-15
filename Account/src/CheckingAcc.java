@@ -1,12 +1,14 @@
 public class CheckingAcc extends Account {
     private double overdraftLimit;
+    private final String TYPE = "Checking account";
 
-    public CheckingAcc() {
-        super();
-        overdraftLimit = 1500;
+    public CheckingAcc(String name, double overdraftLimit) {
+        super(name);
+        this.overdraftLimit = overdraftLimit;
     }
 
-    public CheckingAcc(double overdraftLimit) {
+    public CheckingAcc(String name, double overdraftLimit, int id, double balance) {
+        super(name, id, balance);
         this.overdraftLimit = overdraftLimit;
     }
 
@@ -19,6 +21,6 @@ public class CheckingAcc extends Account {
 
     @Override
     public String toString() {
-        return super.toString();
+        return TYPE + super.toString();
     }
 }

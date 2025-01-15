@@ -1,6 +1,10 @@
-public class SavingsAcc extends Account{
+public class SavingsAcc extends Account {
+    private final String TYPE = "Savings account";
+    public SavingsAcc(String name){
+        super(name);
+    }
     @Override
     public String toString() {
-        return super.toString();
+        return TYPE + super.toString();
     }
 }
