@@ -58,6 +58,14 @@ public class ArraysTask2D {
         return sum;
     }
 
+    public static int allColumnSum(int[][] arr) {
+        int sum = 0;
+        for (int j = 0; j < arr.length; j++) {
+            sum += columnSum(arr, j);
+        }
+        return sum;
+    }
+
     /**
      * Calculates the row sum for every row in arr and returns each of the values in an array.
      *
@@ -74,6 +82,16 @@ public class ArraysTask2D {
             result[i] = sum;
         }
         return result;
+    }
+
+    public static int allRowSumsInt(int[][] arr) {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                sum += arr[i][j];
+            }
+        }
+        return sum;
     }
 
     /**
@@ -146,49 +164,23 @@ public class ArraysTask2D {
             return true;
         }
         if (!isSquare(arr)) return false;
-        HashSet<Integer> length = new HashSet<>();
-        for (int[] ints : arr) {
-
-            for (int j = 0; j < ints.length; j++) {
-                length.add(j);
-            }
-        }
-        if (length.size() != arr.length || length.size() != arr[0].length) {
-            return false;
-        }
-
-
-        HashSet<Integer> height = new HashSet<>();
-
-        for (int[] row : arr) {
-            for (int i = 1; i < row.length; i++) {
-                if () {
-                    return false;
-                }
-            }
-        }
-
-        if (height.size() != arr.length * arr[0].length) {
-            return false;
-        }
-        if (!isRowMagic(arr) || !isColumnMagic(arr)) {
-            return false;
-        }
+        return isRowMagic(arr) && isColumnMagic(arr) && allRowSumsInt(arr) == allColumnSum(arr);
     }
 
-
-        return true;
-}
-
-/**
- * Checks to see if the array arr is square and contains each of the digits from 1 to n*n, e.g., 1, 2, ..., 16 for a 4 x 4 array.
- *
- * @param arr The 2D array to be processed.
- * @return True if the array is a sequence, false otherwise.
- */
-public static boolean isSequence(int[][] arr) {
-    throw new UnsupportedOperationException();
-}
+    /**
+     * Checks to see if the array arr is square and contains each of the digits from 1 to n*n, e.g., 1, 2, ..., 16 for a 4 x 4 array.
+     *
+     * @param arr The 2D array to be processed.
+     * @return True if the array is a sequence, false otherwise.
+     */
+    public static boolean isSequence(int[][] arr) {
+        if (!isSquare(arr)) return false;
+        int sum = 0;
+        for (int i = 1; i <= arr.length * arr.length; i++) {
+            sum += i;
+        }
+        return allRowSumsInt(arr) == sum;
+    }
 
 
 }
