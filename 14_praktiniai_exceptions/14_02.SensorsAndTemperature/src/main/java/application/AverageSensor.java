@@ -12,7 +12,7 @@ public class AverageSensor implements Sensor {
 
     @Override
     public boolean isOn() {
-        return sensors.stream().anyMatch(Sensor::isOn);
+        return sensors.stream().allMatch(Sensor::isOn);
     }
 
     @Override
